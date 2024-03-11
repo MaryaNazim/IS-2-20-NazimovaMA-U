@@ -18,39 +18,35 @@ namespace IS_2_20_NazimovaMA_U
         {
             InitializeComponent();
         }
+        class Connect
+        {
+            public static MySqlConnection GetConnect()
+            {
+                string connStr = "server=localhost;port=3306;user=maryanazim;database=maryadb;password=48985588;";
+                //Переменная соединения
+                MySqlConnection conn = new MySqlConnection(connStr);
+                return conn;
+            }
+        }
+        MySqlConnection conn = Connect.GetConnect();
 
-        //Строка подключения к БД
-        string connStr = "server=localhost;port=3306;user=maryanazim;database=maryadb;password=48985588;";
-        //Переменная соединения
-        MySqlConnection conn;
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                //Открываем соединение с БД
                 conn.Open();
-                //Сообщение при удачной попытке подключиться к БД
-                MessageBox.Show("Подключено");
+                if (conn.State == System.Data.ConnectionState.Open)
+                {
+                    MessageBox.Show("Соединение подключено");
+                }
+                conn.Close();
             }
             catch
             {
-                //При исключении закрываем соединение с БД
-                conn.Close();
-                //Сообщение при возникновении исключения
-                MessageBox.Show("Возникло исключение");
+                MessageBox.Show("Возникла ошибка.");
             }
-            finally
-            {
-                //Закрываем соединение с БД
-                conn.Close();
-            }
-        }
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-            //Инициализируем соединение с подходящей строкой
-            conn = new MySqlConnection(connStr);
         }
     }
 }

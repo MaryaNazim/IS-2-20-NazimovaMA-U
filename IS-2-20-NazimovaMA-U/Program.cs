@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +7,10 @@ using System.Windows.Forms;
 
 namespace IS_2_20_NazimovaMA_U
 {
+    class Connection
+    {
+
+    }
     internal static class Program
     {
         /// <summary>
