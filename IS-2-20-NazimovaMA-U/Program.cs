@@ -7,8 +7,24 @@ using System.Windows.Forms;
 
 namespace IS_2_20_NazimovaMA_U
 {
-    class Connection
+    static class Auth
     {
+        public static string id = null;
+        public static string title = null;
+        public static string duration = null;
+        public static string datetime = null;
+
+    }
+    public class Connectd
+    {
+        public static MySqlConnection Conn()
+        {
+            string connStr = "server=localhost;port=3306;user=maryanazim;database=maryadb;password=48985588;";
+            //Переменная соединения
+            MySqlConnection conn = new MySqlConnection(connStr);
+            return conn;
+        }
+
 
     }
     internal static class Program
